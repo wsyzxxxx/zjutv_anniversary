@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>浙江大学广播电视台台庆后台管理页面</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<p>这是等待审核的</p>
+    <% all.forEach(function(row){ %>
+    <form method="post" action="./admin/reject">
+       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
+       <img src="<%= row.source %>" height="200px" width="200px">
+       <p><%= row.description %></p>
+       <p><%= row.name %></p>
+       <button type="button">审核通过</button>
+       <button type="submit">不通过</button>
+	</form>
+    <% }) %>
+    
+    <p>这是审核通过的</p>
+    <% pass.forEach(function(row){ %>
+    <form method="post" action="./admin/reject">
+       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
+       <img src="<%= row.source %>" height="200px" width="200px">
+       <p><%= row.description %></p>
+       <p><%= row.name %></p>
+       <button type="button">审核通过</button>
+       <button type="submit">不通过</button>
+	</form>
+    <% }) %>
+
+    <p>这是审核不通过的</p>
+    <% reject.forEach(function(row){ %>
+    <form method="post" action="./admin/reject">
+       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
+       <img src="<%= row.source %>" height="200px" width="200px">
+       <p><%= row.description %></p>
+       <p><%= row.name %></p>
+       <button type="button">审核通过</button>
+       <button type="submit">不通过</button>
+	</form>
+    <% }) %>
+    
+  </body>
+</html>
