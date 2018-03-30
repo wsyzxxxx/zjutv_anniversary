@@ -55,6 +55,7 @@ router.post('/upload', function(req, res, next) {
         photoPath = files.photo.path;
         console.log(fields);
         console.log(files.photo.path);
+        uploadModel.uploadPhoto(req, res, formData, photoPath);
     });
 
     form.on('progress', function(bytesReceived, bytesExpected) {
@@ -62,7 +63,7 @@ router.post('/upload', function(req, res, next) {
     });
 
     form.on('end', function() {
-        uploadModel.uploadPhoto(req, res, formData, photoPath);
+        //uploadModel.uploadPhoto(req, res, formData, photoPath);
         //res.send("上传成功！");
     });
 })
