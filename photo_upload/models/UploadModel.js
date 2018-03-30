@@ -95,7 +95,5 @@ module.exports = {
             });
             conn.release();
         });
-
-        res.send("Success!");
     }
 }
