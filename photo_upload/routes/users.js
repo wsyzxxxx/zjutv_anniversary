@@ -54,8 +54,8 @@ router.post('/upload', function(req, res, next) {
 
         formData = fields;
         photoPath = files.photo.path;
-        console.log(fields);
-        console.log(files.photo.path);
+        //console.log(fields);
+        //console.log(files.photo.path);
         uploadModel.uploadPhoto(req, res, formData, photoPath);
     });
 
