@@ -48,13 +48,14 @@ router.post('/upload', function(req, res, next) {
             res.locals.error = '只支持png和jpg格式图片';
             console.log("不好意思，上传只支持png和jpg格式照片")
                 //res.send("不好意思，上传只支持png和jpg格式照片");
-            return;
+                //return;
         }
+
 
         formData = fields;
         photoPath = files.photo.path;
-        //console.log(fields);
-        //console.log(files.photo.path);
+        console.log(fields);
+        console.log(files.photo.path);
         uploadModel.uploadPhoto(req, res, formData, photoPath);
     });
 
