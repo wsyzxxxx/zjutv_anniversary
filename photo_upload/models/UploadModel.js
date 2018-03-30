@@ -75,6 +75,7 @@ module.exports = {
             if (err) {
                 res.send("Get database link failed. The error is: " + err.message);
             }
+            console.log("at upload");
             var searchSql = "select * from users where name=? and cellphone=?";
             var searchParam = [formData['name'], formData['phone']];
             conn.query(searchSql, searchParam, function(err, result) {
@@ -92,6 +93,8 @@ module.exports = {
                 }
             });
             conn.release();
-        })
+        });
+
+        res.send("Success!");
     }
 }
