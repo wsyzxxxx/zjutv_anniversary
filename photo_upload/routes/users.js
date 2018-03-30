@@ -41,21 +41,24 @@ router.post('/upload', function(req, res, next) {
             case 'image/x-png':
                 extName = 'png';
                 break;
+            case 'image/jpg':
+                extName = 'jpg';
+                break;
         }
         //console.log(fields);
         //console.log(files);
         if (extName.length == 0) {
             res.locals.error = '只支持png和jpg格式图片';
             console.log("不好意思，上传只支持png和jpg格式照片")
-                //res.send("不好意思，上传只支持png和jpg格式照片");
-                //return;
+            res.send("不好意思，上传只支持png和jpg格式照片");
+            return;
         }
 
 
         formData = fields;
         photoPath = files.photo.path;
         //console.log(fields);
-        console.log(files.photo.type);
+        //console.log(files.photo.type);
         uploadModel.uploadPhoto(req, res, formData, photoPath);
     });
 
