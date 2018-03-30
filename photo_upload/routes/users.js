@@ -42,7 +42,8 @@ router.post('/upload', function(req, res, next) {
                 extName = 'png';
                 break;
         }
-
+        console.log(files);
+        console.log(files);
         if (extName.length == 0) {
             res.locals.error = '只支持png和jpg格式图片';
             console.log("不好意思，上传只支持png和jpg格式照片")
