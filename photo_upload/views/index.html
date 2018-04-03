@@ -8,8 +8,9 @@
     <title>浙江大学广播电视台周年庆</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" media="screen" />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Custom CSS-->
+    <link href="stylesheets/common.css" rel="stylesheet" />
     <link href="stylesheets/index.css" rel="stylesheet" />
   </head>
 
@@ -35,13 +36,6 @@
       </div>
     </nav>
     <div class="container">
-      <!--div class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 重新获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="binddivTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </div-->
       <image class="title" src="img/title.png"></image>
       <form onsubmit="bindSaveTap">
         <div class="row">

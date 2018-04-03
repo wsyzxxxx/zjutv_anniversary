@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="divport" content="width=device-width, initial-scale=1">
+    <title>浙江大学广播电视台周年庆</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" media="screen" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS-->
+    <link href="stylesheets/common.css" rel="stylesheet" />
+    <link href="stylesheets/gallery.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default white" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img class="navbar-logo" src="img/logo.png" />
+          <a>欢迎{{userInfo.nickName}}！您是分享照片的第x位台胞</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+      <div class = "row" id="gallery">
+        <div class = "box">
+          <img src = "try/0.jpg"/>
+          <div class = "mask clickable" data-toggle="modal" data-target="#oriPic"></div>
+        </div>
+        <div class = "box">
+          <img src = "try/1.jpg"/>
+          <div class = "mask clickable" data-toggle="modal" data-target="#oriPic"></div>
+        </div>
+        <div class = "box">
+          <img src = "try/2.jpg"/>
+        </div>
+        <div class = "box">
+          <img src = "try/3.jpg"/>
+        </div>
+        <div class = "box">
+          <img src = "try/4.jpg"/>
+        </div>
+        <div class = "box">
+          <img src = "try/5.jpg"/>
+        </div>
+        <div class = "box">
+          <img src = "try/6.jpg"/>
+        </div>
+        <div class = "box">
+          <img src = "try/7.jpg"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="oriPic" tabindex="-1" aria-hidden="true">
+      <div class="modal-content fixed-pic">
+        <img src = "try/1.jpg">  
+      </div>
+    </div><!-- /.modal -->
+
+    <script src="jquery/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/gallery.js"></script>
+  </body>
+
+</html>
