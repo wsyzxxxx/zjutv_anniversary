@@ -81,8 +81,8 @@ module.exports = {
                 console.log("Database error!:" + err.message);
                 res.send("Get database link failed. The error is: " + err.message);
             }
-            console.log(formData);
-            console.log(photoPath);
+            //console.log(formData);
+            //console.log(photoPath);
             var searchSql = "select * from users where name=? and cellphone=?";
             var searchParam = [formData['name'], formData['phone']];
             conn.query(searchSql, searchParam, function(err, result) {
