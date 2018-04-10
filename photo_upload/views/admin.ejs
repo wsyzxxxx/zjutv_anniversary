@@ -47,7 +47,7 @@
                 <div class="tab-pane fade in active" id="Waiting">
                     <% all.forEach(function(row){ %>
                     <form action="admin/pass" method="post">
-                    <div class="col-md-6 col-xs-12 box">
+                    <div class="col-md-6 col-sm-12 col-xs-12 box">
                         <input type="hidden" name="photo_id" value="<%= row.photo_id %>"/>
                         <input type="hidden" id="allstatus" name="status" value="0"/>
                         <div class="card col-xs-8 col-sm-8">
@@ -68,10 +68,10 @@
                     <% }); %>
                 </div>
 
-                <div class="tab-pane fade in" id="Passed">
+                <div class="tab-pane fade" id="Passed">
                     <% pass.forEach(function(row){ %>
                     <form action="admin/pass" method="post">
-                    <div class="col-md-6 col-xs-12 box">
+                    <div class="col-md-6 col-sm-12 col-xs-12 box">
                         <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
                         <input type="hidden" id="passstatus" name="status" value="0"/>
                         <div class="card col-xs-8 col-sm-8">
@@ -92,10 +92,10 @@
                     <% }); %>
                 </div>
 
-                <div class="tab-pane fade in" id="Refused">
+                <div class="tab-pane fade" id="Refused">
                     <% reject.forEach(function(row){ %>
                     <form action="admin/pass" method="post">
-                    <div class="col-md-6 col-xs-12 box">
+                    <div class="col-md-6 col-sm-12 col-xs-12 box">
                         <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
                         <input type="hidden" id="rejectstatus" name="status" value="0"/>
                         <div class="card col-xs-8 col-sm-8">
@@ -117,10 +117,6 @@
                 </div>
 
             </div>
-            <!--div class="tab-pane fade center" id="Passed">
-            </div>
-            <div class="tab-pane fade center" id="Refused">
-            </div-->
         </div>
     </div>
 

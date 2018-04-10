@@ -6,6 +6,7 @@
 .ContentSheet {
     background-color: white;
     padding: 2rem;
+    width: 99.8%;
     border-style: none solid solid solid;
     border-color: #DDDDDD;
     border-width: 0.1rem;
