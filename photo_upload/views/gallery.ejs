@@ -28,6 +28,11 @@
                 <a>欢迎您欣赏台胞上传的照片</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/users">上传我的图片</a></li>
+                </ul>
+            </div>
                 <!--ul class="nav navbar-nav navbar-right">
             <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
           </ul-->
@@ -37,11 +42,13 @@
     </nav>
     <div class="container">
         <div class="row" id="gallery">
+            <% pass.forEach(function(row){ %>
             <div class="box">
-                <img src="try/0.jpg" />
+                <img src="<%= row.source %>" />
                 <div class="mask clickable" data-toggle="modal" data-target="#oriPic"></div>
             </div>
-            <div class="box">
+            <% }) %>
+            <!--div class="box">
                 <img src="try/1.jpg" />
                 <div class="mask clickable" data-toggle="modal" data-target="#oriPic"></div>
             </div>
@@ -62,7 +69,7 @@
             </div>
             <div class="box">
                 <img src="try/7.jpg" />
-            </div>
+            </div-->
         </div>
     </div>
 
@@ -75,7 +82,66 @@
 
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/gallery.js"></script>
+    <script>
+        $(window).ready(function() {
+    adjust();
+    $("#gallery .box div").click(function() {
+        $("#oriPic img").attr("src", $(this).prev().attr("src"));
+    })
+});
+
+/*$(window).resize(function() {
+	try{
+		if(resizeTimer == undefined || resizeTimer)clearTimeout(resizeTimer);
+	}catch(e){}
+    resizeTimer = setTimeout(function() {
+        adjust();
+    }, 500);
+});*/
+
+function adjust() {
+    $("#gallery .box div").hide();
+    var boxes = $("#gallery .box");
+    var recent_num = 0;
+    var recent_width = 0;
+    for (var index = 0; index < boxes.length; index++) {
+    //var index = 0;
+        <% pass.forEach(function(row) { %>
+        recent_width += $(boxes[index]).width();
+        if (recent_width >= $("#gallery").width() - $(boxes[index]).height() / 2) {
+            var new_height = $("#gallery").width() * $(boxes[index]).height() / (recent_width + recent_num * 16) - 8;
+            for (var i = 0; i <= recent_num; i++) {
+                $(boxes[index - i]).find("img").height(new_height);
+                $(boxes[index - i]).find("div").height(new_height);
+                $(boxes[index - i]).find("div").width($(boxes[index - i]).width());
+                var picIntro = $("<div class = 'single-line pic-intro'></div>").text("<%= row.name %>");
+                $(boxes[index - i]).find("div").append(picIntro);
+            }
+            recent_num = 0;
+            recent_width = 0;
+        } else
+            recent_num += 1;
+
+        $(boxes[index]).find("div").hover(function() {
+            var picTitle = $("<div class = 'pic-title'></div>").text("<%= row.name %>");
+            var picContent = $("<div class = 'pic-content'></div>").text("<%= row.description %>");
+            $(this).empty();
+            $(this).append(picTitle, picContent);
+        },
+            function() {
+                var picIntro = $("<div class = 'single-line pic-intro'></div>").text("<%= row.name %>");
+                $(this).empty();
+                $(this).append(picIntro);
+            }
+        );
+        index++;
+        <% }) %>
+    }
+
+    //$("#gallery .box div")
+    $("#gallery .box div").show();
+}
+    </script>
 </body>
 
 </html>

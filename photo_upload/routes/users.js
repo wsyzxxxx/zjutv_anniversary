@@ -8,7 +8,7 @@ var uploadModel = require('../models/UploadModel');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render("upload");
+    res.render("index");
 });
 
 router.all('/photo_from_microapp', function(req, res, next) {
@@ -45,6 +45,7 @@ router.post('/upload', function(req, res, next) {
                 extName = 'jpg';
                 break;
         }
+
         //console.log(fields);
         //console.log(files);
         if (extName.length == 0) {
@@ -61,14 +62,13 @@ router.post('/upload', function(req, res, next) {
         //console.log(files.photo.type);
         uploadModel.uploadPhoto(req, res, formData, photoPath);
     });
-
     form.on('progress', function(bytesReceived, bytesExpected) {
         console.log("当前进度" + bytesReceived + ";" + bytesExpected);
     });
 
     // form.on('end', function() {
-    //     //uploadModel.uploadPhoto(req, res, formData, photoPath);
-    //     //res.send("上传成功！");
+    //     uploadModel.uploadPhoto(req, res, formData, photoPath);
+    //     res.send("上传成功！");
     // });
 })
 module.exports = router;

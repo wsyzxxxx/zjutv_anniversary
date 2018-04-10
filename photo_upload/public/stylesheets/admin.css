@@ -1,54 +1,57 @@
-.container{
+.container {
     width: 90%;
     padding: 2rem;
 }
 
-.ContentSheet{
-	background-color: white;
-	padding: 2rem;
-	border-style:none solid solid solid;
-	border-color : #DDDDDD;
-	border-width: 0.1rem;
-	font-size: 1.6rem;
-	text-align: left;
-	min-height: 53rem;
+.ContentSheet {
+    background-color: white;
+    padding: 2rem;
+    border-style: none solid solid solid;
+    border-color: #DDDDDD;
+    border-width: 0.1rem;
+    font-size: 1.6rem;
+    text-align: left;
+    min-height: 53rem;
+    float: left;
 }
 
-#myTab li{
-	width: 33.33%;
+#myTab li {
+    width: 33.33%;
 }
 
-#myTab a{
-	color: #555;
-	font-size: 1.6rem;
+#myTab a {
+    color: #555;
+    font-size: 1.6rem;
 }
 
-#myTab a:hover{
-	color: grey;	
+#myTab a:hover {
+    color: grey;
 }
 
-.pic-label{
-	color:  #20a2f9;
-	font-weight: 600;
-	font-size: 1.3rem;
+.pic-label {
+    color: #20a2f9;
+    font-weight: 600;
+    font-size: 1.3rem;
+    height: 2.6rem;
 }
 
-.pic{
-  width: 100%;
-  padding-right: 2rem;
+.pic {
+    width: 100%;
+    height: auto;
+    padding-right: 2rem;
 }
 
-.box{
-	padding: 1rem;
-	background-color: white;
-	border: solid #ddd 0.1rem;
-	box-shadow: 0 0 0.5rem #ddd;
+.box {
+    padding: 1rem;
+    background-color: white;
+    border: solid #ddd 0.1rem;
+    box-shadow: 0 0 0.5rem #ddd;
 }
 
-.fake-button{
-	background-color: transparent;
-	border: none;
-	padding-top: 1rem;
-	font-size: 1.4rem;
-	font-weight: 600;
+.fake-button {
+    background-color: transparent;
+    border: none;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
 }

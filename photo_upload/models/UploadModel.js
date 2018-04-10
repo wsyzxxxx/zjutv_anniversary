@@ -14,7 +14,7 @@ function uploadWithUser(req, res, formData, photoPath, user_id) {
                 res.send("Database error! " + err.message);
                 return;
             }
-            res.send("上传成功！你是已有的user！")
+            res.send("<script>alert('上传成功，请等待管理员审核!');</script>");
         });
         conn.release();
     })
@@ -24,10 +24,9 @@ function uploadWithoutUser(req, res, formData, photoPath) {
     pool = connPool();
     pool.getConnection(function(err, conn) {
         if (err) {
-            console.log("Database error!:" + err.message);
             res.send("Get database link failed. The error is: " + err.message);
         }
-        var insertSql = "insert into users(wechat,name,cellphone,grade,user_status) values('',?,?,?,0)";
+        var insertSql = "insert into users(wechat, name, cellphone, grade, user_status) values('',?,?,?,0)";
         var insertParam = [formData['name'], formData['phone'], formData['grade']];
         var selectSql = "select * from users where name=? and cellphone=?";
         var selectParam = [formData['name'], formData['phone']];
@@ -36,7 +35,6 @@ function uploadWithoutUser(req, res, formData, photoPath) {
             function(callback) {
                 conn.query(insertSql, insertParam, function(err, insertResult) {
                     if (err) {
-                        console.log("Database error!:" + err.message);
                         res.send("Database error!:" + err.message);
                         return;
                     }
@@ -47,7 +45,6 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 //now agr1 equals insertResult
                 conn.query(selectSql, selectParam, function(err, userResult) {
                     if (err) {
-                        console.log("Database error!:" + err.message);
                         res.send("Database error!:" + err.message);
                         return;
                     }
@@ -58,7 +55,6 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 var photoParam = [formData['description'], photoPath, arg1[0].id];
                 conn.query(insertPhotoSql, photoParam, function(err, photoResult) {
                     if (err) {
-                        console.log("Database error!:" + err.message);
                         res.send("Database error!:" + err.message);
                         return;
                     }
@@ -66,8 +62,7 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 })
             }
         ], function(err, result) {
-            console.log("Success");
-            res.send("上传成功，你是没有存在的user～")
+            res.send("<script>alert('上传成功，请等待管理员审核!');</script>");
         })
 
         conn.release();
@@ -78,16 +73,12 @@ module.exports = {
         pool = connPool();
         pool.getConnection(function(err, conn) {
             if (err) {
-                console.log("Database error!:" + err.message);
                 res.send("Get database link failed. The error is: " + err.message);
             }
-            //console.log(formData);
-            //console.log(photoPath);
             var searchSql = "select * from users where name=? and cellphone=?";
             var searchParam = [formData['name'], formData['phone']];
             conn.query(searchSql, searchParam, function(err, result) {
                 if (err) {
-                    console.log("Database error!:" + err.message);
                     res.send("Database error! " + err.message);
                     return;
                 }
@@ -101,6 +92,6 @@ module.exports = {
                 }
             });
             conn.release();
-        });
+        })
     }
 }

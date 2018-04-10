@@ -1,45 +1,139 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>浙江大学广播电视台台庆后台管理页面</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-  	<p>这是等待审核的</p>
-    <% all.forEach(function(row){ %>
-    <form method="post" action="./admin/reject">
-       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
-       <img src="<%= row.source %>" height="200px" width="200px">
-       <p><%= row.description %></p>
-       <p><%= row.name %></p>
-       <button type="button">审核通过</button>
-       <button type="submit">不通过</button>
-	</form>
-    <% }) %>
-    
-    <p>这是审核通过的</p>
-    <% pass.forEach(function(row){ %>
-    <form method="post" action="./admin/reject">
-       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
-       <img src="<%= row.source %>" height="200px" width="200px">
-       <p><%= row.description %></p>
-       <p><%= row.name %></p>
-       <button type="button">审核通过</button>
-       <button type="submit">不通过</button>
-	</form>
-    <% }) %>
+<html lang="zh-CN">
 
-    <p>这是审核不通过的</p>
-    <% reject.forEach(function(row){ %>
-    <form method="post" action="./admin/reject">
-       <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
-       <img src="<%= row.source %>" height="200px" width="200px">
-       <p><%= row.description %></p>
-       <p><%= row.name %></p>
-       <button type="button">审核通过</button>
-       <button type="submit">不通过</button>
-	</form>
-    <% }) %>
-    
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="divport" content="width=device-width, initial-scale=1">
+    <title>浙江大学广播电视台周年庆</title>
+    <link rel="shortcut icon" type="img/x-icon" href="img/logo.png" media="screen" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS-->
+    <link href="stylesheets/common.css" rel="stylesheet" />
+    <link href="stylesheets/admin.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default white" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <img class="navbar-logo" src="img/logo.png" />
+                <a>欢迎亲爱的管理员！</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active tab"><a href="#Waiting" data-toggle="tab">待审核列表</a></li>
+            <li class="tab"><a href="#Passed" data-toggle="tab">已通过列表</a></li>
+            <li class="tab"><a href="#Refused" data-toggle="tab">未通过列表</a></li>
+        </ul>
+        <div class="ContentSheet">
+            <div id="myTabContent" class="tab-content">
+
+                <div class="tab-pane fade in active" id="Waiting">
+                    <% all.forEach(function(row){ %>
+                    <form action="admin/pass" method="post">
+                    <div class="col-md-6 col-xs-12 box">
+                        <input type="hidden" name="photo_id" value="<%= row.photo_id %>"/>
+                        <input type="hidden" id="allstatus" name="status" value="0"/>
+                        <div class="card col-xs-8 col-sm-8">
+                            <img class="pic clickable" data-toggle="modal" data-target="#oriPic" src="<%= row.source %>"></img>
+                        </div>
+
+                        <div class="card col-xs-4 col-sm-4">
+                            <div><span class="glyphicon glyphicon-calendar pic-label"></span>  <%= row.grade %></div>
+                            <div><span class="glyphicon glyphicon-user pic-label"></span>  <%= row.name %></div>
+                            <div><span class="glyphicon glyphicon-phone pic-label"></span>  <%= row.cellphone %></div>
+                            <div><span class="glyphicon glyphicon-pencil pic-label"></span>  <%= row.description %></div>
+                            <div><button class="fake-button blue" onclick="checkStatus('1')" ><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
+                                <button class="fake-button blue" onclick="checkStatus('0')"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <% }); %>
+                </div>
+
+                <div class="tab-pane fade in" id="Passed">
+                    <% pass.forEach(function(row){ %>
+                    <form action="admin/pass" method="post">
+                    <div class="col-md-6 col-xs-12 box">
+                        <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
+                        <input type="hidden" id="passstatus" name="status" value="0"/>
+                        <div class="card col-xs-8 col-sm-8">
+                            <img class="pic clickable" data-toggle="modal" data-target="#oriPic" src="<%= row.source %>"></img>
+                        </div>
+
+                        <div class="card col-xs-4 col-sm-4">
+                            <div><span class="glyphicon glyphicon-calendar pic-label"></span>  <%= row.grade %></div>
+                            <div><span class="glyphicon glyphicon-user pic-label"></span>  <%= row.name %></div>
+                            <div><span class="glyphicon glyphicon-phone pic-label"></span>  <%= row.cellphone %></div>
+                            <div><span class="glyphicon glyphicon-pencil pic-label"></span>  <%= row.description %></div>
+                            <div><button class="fake-button blue" onclick="checkStatus('1')"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
+                                <button class="fake-button blue" onclick="checkStatus('0')"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <% }); %>
+                </div>
+
+                <div class="tab-pane fade in" id="Refused">
+                    <% reject.forEach(function(row){ %>
+                    <form action="admin/pass" method="post">
+                    <div class="col-md-6 col-xs-12 box">
+                        <input type="hidden" name="photo_id" value="<%= row.photo_id %>">
+                        <input type="hidden" id="rejectstatus" name="status" value="0"/>
+                        <div class="card col-xs-8 col-sm-8">
+                            <img class="pic clickable" data-toggle="modal" data-target="#oriPic" src="<%= row.source %>"></img>
+                        </div>
+
+                        <div class="card col-xs-4 col-sm-4">
+                            <div><span class="glyphicon glyphicon-calendar pic-label"></span>  <%= row.grade %></div>
+                            <div><span class="glyphicon glyphicon-user pic-label"></span>  <%= row.name %></div>
+                            <div><span class="glyphicon glyphicon-phone pic-label"></span>  <%= row.cellphone %></div>
+                            <div><span class="glyphicon glyphicon-pencil pic-label"></span>  <%= row.description %></div>
+                            <div><button class="fake-button blue" onclick="checkStatus('1')"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
+                                <button class="fake-button blue" onclick="checkStatus('0')"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <% }); %>
+                </div>
+
+            </div>
+            <!--div class="tab-pane fade center" id="Passed">
+            </div>
+            <div class="tab-pane fade center" id="Refused">
+            </div-->
+        </div>
+    </div>
+
+    <div class="modal fade" id="oriPic" tabindex="-1" aria-hidden="true">
+        <div class="modal-content fixed-pic">
+            <img src="try/1.jpg">
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <script src="jquery/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
 </html>

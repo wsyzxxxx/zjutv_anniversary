@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="divport" content="width=device-width, initial-scale=1">
@@ -12,88 +12,89 @@
     <!-- Custom CSS-->
     <link href="stylesheets/common.css" rel="stylesheet" />
     <link href="stylesheets/admin.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-default white" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img class="navbar-logo" src="img/logo.png" />
-          <a>欢迎亲爱的管理员{{userInfo.nickName}}！</a>
+                <img class="navbar-logo" src="img/logo.png" />
+                <a>欢迎亲爱的管理员！</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
-          </ul>
-        </div>
-        <!--/.nav-collapse -->
-      </div>
     </nav>
     <div class="container">
-      <ul id="myTab" class="nav nav-tabs">
-        <li class="active tab"><a href="#Waiting" data-toggle="tab">待审核列表</a></li>
-        <li class="tab"><a href="#Passed" data-toggle="tab">已通过列表</a></li>
-        <li class="tab"><a href="#Refused" data-toggle="tab">未通过列表</a></li>
-      </ul>
-      <div class="ContentSheet">
-        <div id="myTabContent" class="tab-content">
-          <div class="tab-pane fade in active" id="Waiting">
-            <div class="col-md-6 col-xs-12 box">
-              <div class="card col-xs-8 col-sm-8">
-                <image class="pic clickable" data-toggle="modal" data-target="#oriPic" src="try/1.jpg"></image>
-              </div>
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active tab"><a href="#Waiting" data-toggle="tab">待审核列表</a></li>
+            <li class="tab"><a href="#Passed" data-toggle="tab">已通过列表</a></li>
+            <li class="tab"><a href="#Refused" data-toggle="tab">未通过列表</a></li>
+        </ul>
+        <div class="ContentSheet">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="Waiting">
+                    <div class="col-md-6 col-xs-12 box">
+                        <div class="card col-xs-8 col-sm-8">
+                            <image class="pic clickable" data-toggle="modal" data-target="#oriPic" src="try/1.jpg"></image>
+                        </div>
 
-              <div class="card col-xs-4 col-sm-4">
-                <div><span class = "glyphicon glyphicon-user pic-label">：</span>xx届 xx</div>
-                <div><span class = "pic-label">WX：</span>xxxx xxx xxx</div>
-                <div><span class = "pic-label">TEL：</span>xx xxx xxxx</div>
-                <div><span class = "pic-label">DESCRIPTION：</span>xx xx xxx xxxxxxx xxxxxxxx xx xxxx xxx xxxxx xxxxxx xx xx xxx</div>
-                <div><button class = "fake-button blue"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
-                  <button class = "fake-button blue"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                        <div class="card col-xs-4 col-sm-4">
+                            <div><span class="glyphicon glyphicon-user pic-label">：</span>xx届 xx</div>
+                            <div><span class="pic-label">WX：</span>xxxx xxx xxx</div>
+                            <div><span class="pic-label">TEL：</span>xx xxx xxxx</div>
+                            <div><span class="pic-label">DESCRIPTION：</span>xx xx xxx xxxxxxx xxxxxxxx xx xxxx xxx xxxxx xxxxxx xx xx xxx</div>
+                            <div><button class="fake-button blue"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
+                                <button class="fake-button blue"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 box">
+                        <div class="card col-xs-8 col-sm-8">
+                            <image class="pic clickable" data-toggle="modal" data-target="#oriPic" src="try/2.jpg"></image>
+                        </div>
+
+                        <div class="card col-xs-4 col-sm-4">
+                            <div><span class="glyphicon glyphicon-user pic-label">：</span>xx届 xx</div>
+                            <div><span class="pic-label">WX：</span>xxxx xxx xxx</div>
+                            <div><span class="pic-label">TEL：</span>xx xxx xxxx</div>
+                            <div><span class="pic-label">DESCRIPTION：</span>xx xx xxx xxxxxxx xxxxxxxx xx xxxx xxx xxxxx xxxxxx xx xx xxx</div>
+                            <div><button class="fake-button blue"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
+                                <button class="fake-button blue"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-              </div> 
             </div>
-
-            <div class="col-md-6 col-xs-12 box">
-              <div class="card col-xs-8 col-sm-8">
-                <image class="pic clickable" data-toggle="modal" data-target="#oriPic" src="try/2.jpg"></image>
-              </div>
-
-              <div class="card col-xs-4 col-sm-4">
-                <div><span class = "glyphicon glyphicon-user pic-label">：</span>xx届 xx</div>
-                <div><span class = "pic-label">WX：</span>xxxx xxx xxx</div>
-                <div><span class = "pic-label">TEL：</span>xx xxx xxxx</div>
-                <div><span class = "pic-label">DESCRIPTION：</span>xx xx xxx xxxxxxx xxxxxxxx xx xxxx xxx xxxxx xxxxxx xx xx xxx</div>
-                <div><button class = "fake-button blue"><span class = "glyphicon glyphicon-thumbs-up pic-label"></span> 通过</button>&nbsp;&nbsp;
-                  <button class = "fake-button blue"><span class = "glyphicon glyphicon-thumbs-down pic-label"></span> 不通过</button>
-                </div>
-              </div> 
+            <div class="tab-pane fade center" id="Passed">
             </div>
-
-          </div>
+            <div class="tab-pane fade center" id="Refused">
+            </div>
         </div>
-        <div class="tab-pane fade center" id="Passed">
-        </div>
-        <div class="tab-pane fade center" id="Refused">
-        </div>
-      </div>
     </div>
 
-     <div class="modal fade" id="oriPic" tabindex="-1" aria-hidden="true">
-      <div class="modal-content fixed-pic">
-        <img src = "try/1.jpg">  
-      </div>
-    </div><!-- /.modal -->
+    <div class="modal fade" id="oriPic" tabindex="-1" aria-hidden="true">
+        <div class="modal-content fixed-pic">
+            <img src="try/1.jpg">
+        </div>
+    </div>
+    <!-- /.modal -->
 
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/admin.js"></script>
-  </body>
+</body>
 
 </html>

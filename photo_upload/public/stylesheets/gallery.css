@@ -1,83 +1,83 @@
-.container{
+.container {
     width: 100%;
     padding: 2rem;
 }
 
-#gallery{
+#gallery {
     width: 100%;
     margin: 0;
     position: relative;
 }
 
-.box{
-	padding: 0.5rem;
-	background-color: white;
-	border: solid #ddd 0.1rem;
-	box-shadow: 0 0 0.5rem #ddd;
-	float: left;
-	position: relative;
-	margin: 0.2rem;
+.box {
+    padding: 0.5rem;
+    background-color: white;
+    border: solid #ddd 0.1rem;
+    box-shadow: 0 0 0.5rem #ddd;
+    float: left;
+    position: relative;
+    margin: 0.2rem;
 }
 
-.box img{
-	height: 30rem;
-	width: auto;
+.box img {
+    height: 30rem;
+    width: auto;
 }
 
-.single-line{
-	white-space: nowrap;
-	overflow:hidden;
-    text-overflow:ellipsis; 
+.single-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.mask{
-	top: 0;
-	left: 0;
-	margin: 0.5rem;
-	padding: 0rem;
-	color: white;
-
-	position: absolute;
-	vertical-align: bottom;
-
-	opacity:0.5;
-    filter(alpha=0.5);
-
-    background: -webkit-linear-gradient(rgba(0,0,0,0) 80%,rgba(0,0,0,1)); /* Safari 5.1 - 6 */
-	background: -o-linear-gradient(rgba(0,0,0,0) 80%,rgba(0,0,0,1)); /* Opera 11.1 - 12*/
-	background: -moz-linear-gradient(rgba(0,0,0,0) 80%,rgba(0,0,0,1)); /* Firefox 3.6 - 15*/
-	background: linear-gradient(rgba(0,0,0,0) 80%, rgba(0,0,0,1)); /* 标准的语法 */
-
+.mask {
+    top: 0;
+    left: 0;
+    margin: 0.5rem;
+    padding: 0rem;
+    color: white;
+    position: absolute;
+    vertical-align: bottom;
+    opacity: 0.5;
+    filter: (alpha=0.5);
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1));
+    /* Safari 5.1 - 6 */
+    background: -o-linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1));
+    /* Opera 11.1 - 12*/
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1));
+    /* Firefox 3.6 - 15*/
+    background: linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1));
+    /* 标准的语法 */
     transition: all 0.2s ease-in-out;
 }
 
-.pic-intro{
-	color: white;
-	padding: 1rem;
-	font-size: 2rem;
-	position: absolute;
-	text-align: center;
-	bottom: 0;
-	width:100%;
+.pic-intro {
+    color: white;
+    padding: 1rem;
+    font-size: 2rem;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
 }
 
-.pic-title{
-	text-align: center;
-	padding: 1rem;
-	padding-top: 8rem;
-	width:100%;
-	font-size: 2rem;
+.pic-title {
+    text-align: center;
+    padding: 1rem;
+    padding-top: 8rem;
+    width: 100%;
+    font-size: 2rem;
 }
 
-.pic-content{
-	word-wrap:break-word; 
-	padding: 1rem 20%;
+.pic-content {
+    word-wrap: break-word;
+    padding: 1rem 15%;
+    text-align: center;
     padding-top: 0;
-    text-align: left;
 }
 
-.mask:hover{
-	background-color: black;
-	opacity:0.6;
-    filter(alpha=60);
+.mask:hover {
+    background-color: black;
+    opacity: 0.6;
+    filter: (alpha=60);
 }
