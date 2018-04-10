@@ -14,7 +14,7 @@ function uploadWithUser(req, res, formData, photoPath, user_id) {
                 res.send("Database error! " + err.message);
                 return;
             }
-            res.send("<script>alert('上传成功，请等待管理员审核!');</script>");
+            res.send("<script>alert('上传成功，请等待管理员审核!');window.location.href='/';</script>");
         });
         conn.release();
     })
@@ -62,7 +62,7 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 })
             }
         ], function(err, result) {
-            res.send("<script>alert('上传成功，请等待管理员审核!');</script>");
+            res.send("<script>alert('上传成功，请等待管理员审核!');window.location.href='/';</script>");
         })
 
         conn.release();
