@@ -6,11 +6,15 @@
   </head>
   <body>
     <form action="users/upload" method="post" enctype="multipart/form-data">
-    	<input type="file" name="photo">
+      <input type="file" name="photo">
+      <input type="textarea" name="description1" placeholder="请输入描述">
+      <!--<input type="file" name="photo2">
+      <input type="textarea" name="description2" placeholder="请输入描述">
+      <input type="file" name="photo3">
+      <input type="textarea" name="description3" placeholder="请输入描述">-->
     	<input type="text" name="grade" placeholder="请输入毕业届">
     	<input type="text" name="name" placeholder="请输入姓名">
     	<input type="text" name="phone" placeholder="请输入电话号码">
-    	<input type="textarea" name="description" placeholder="请输入描述">
     	<input type="submit">
 	</form>
   </body>

@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="divport" content="width=device-width, initial-scale=1">
     <title>浙江大学广播电视台周年庆</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" media="screen" />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom CSS-->
     <link href="stylesheets/common.css" rel="stylesheet" />
     <link href="stylesheets/index.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-default white" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img class="navbar-logo" src="img/logo.png" />
-          <a>欢迎{{userInfo.nickName}}！您是分享照片的第x位台胞</a>
+                <img class="navbar-logo" src="img/logo.png" />
+                <a>欢迎{{userInfo.nickName}}！您是分享照片的第x位台胞</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{$logout_url}"><span class="glyphicon glyphicon-off"></span> 登出</a></li>
-          </ul>
-        </div>
-        <!--/.nav-collapse -->
-      </div>
     </nav>
     <div class="container">
-      <image class="title" src="img/title.png"></image>
-      <form onsubmit="bindSaveTap">
-        <div class="row">
-          <div class="col-sm-offset-0 col-sm-6 col-md-offset-1 col-sm-offset-0 col-sm-6 col-md-5 col-xs-offset-1 col-xs-10">
-            <div class="white card">
-              <image id = "picture" class="pic clickable" src="img/logo.svg"></image>
-              <input type="file" id="pic_file" style="display: none">
-              <div class="section pic_reminder">
-                <label class = "clickable">点击上传/更改图片</label>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-offset-0 col-sm-6 col-md-offset-0 col-sm-offset-0 col-sm-6 col-md-5 col-xs-offset-1 col-xs-10">
-            <div class="white card">
-              <div class="row-wrap dash-bord">
-                <div class="col-lg-3 col-sm-4 col-xs-3">
-                  <label>毕业年份 </label>
+        <image class="title" src="img/title.png"></image>
+        <form onsubmit="bindSaveTap">
+            <div class="row">
+                <div class="col-sm-offset-0 col-sm-6 col-md-offset-1 col-sm-offset-0 col-sm-6 col-md-5 col-xs-offset-1 col-xs-10">
+                    <div class="white card">
+                        <image id="picture" class="pic clickable" src="img/logo.svg"></image>
+                        <input type="file" id="pic_file" style="display: none">
+                        <div class="section pic_reminder">
+                            <label class="clickable">点击上传/更改图片</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-9 col-sm-8 col-xs-9">
-                  <select name="grad_year" class="form-control">
+                <div class="col-sm-offset-0 col-sm-6 col-md-offset-0 col-sm-offset-0 col-sm-6 col-md-5 col-xs-offset-1 col-xs-10">
+                    <div class="white card">
+                        <div class="row-wrap dash-bord">
+                            <div class="col-lg-3 col-sm-4 col-xs-3">
+                                <label>毕业年份 </label>
+                            </div>
+                            <div class="col-lg-9 col-sm-8 col-xs-9">
+                                <select name="grad_year" class="form-control">
                     <option value="2010">2010</option>
                     <option value="2011">2011</option>
                     <option value="2012">2012</option>
@@ -69,44 +69,45 @@
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                   </select>
+                            </div>
+                        </div>
+                        <div class="row-wrap dash-bord">
+                            <div class="col-lg-3 col-sm-4 col-xs-3">
+                                <label>姓名 </label>
+                            </div>
+                            <div class="col-lg-9 col-sm-8 col-xs-9">
+                                <input name="user_name" class="form-control" placeholder='请输入您的姓名' />
+                            </div>
+                        </div>
+                        <div class="row-wrap dash-bord">
+                            <div class="col-lg-3 col-sm-4 col-xs-3">
+                                <label>联系电话 </label>
+                            </div>
+                            <div class="col-lg-9 col-sm-8 col-xs-9">
+                                <input name="phone" class="form-control" placeholder='请输入您的联系电话' />
+                            </div>
+                        </div>
+                        <div id="description" class="row-wrap">
+                            <div class="col-lg-3 col-sm-4 col-xs-3">
+                                <label>图片描述 </label>
+                            </div>
+                            <div class="col-lg-9 col-sm-8 col-xs-9">
+                                <textarea class="form-control describe" name="description" placeholder='请添加必要的图片说明'></textarea>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <button class="btn cos-btn" form-type='submit'>保存</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="row-wrap dash-bord">
-                <div class="col-lg-3 col-sm-4 col-xs-3">
-                  <label>姓名 </label>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-xs-9">
-                  <input name="user_name" class="form-control" placeholder='请输入您的姓名' />
-                </div>
-              </div>
-              <div class="row-wrap dash-bord">
-                <div class="col-lg-3 col-sm-4 col-xs-3">
-                  <label>联系电话 </label>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-xs-9">
-                  <input name="phone" class="form-control" placeholder='请输入您的联系电话' />
-                </div>
-              </div>
-              <div id = "description" class="row-wrap">
-                <div class="col-lg-3 col-sm-4 col-xs-3">
-                  <label>图片描述 </label>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-xs-9">
-                  <textarea class="form-control describe" name="description" placeholder='请添加必要的图片说明'></textarea>
-                </div>
-              </div>
-              <div class="section">
-                <button class="btn" form-type='submit'>保存</button>
-              </div>
             </div>
-          </div>
-        </div>
-      </form>
+        </form>
     </div>
 
     <script src="jquery/jquery.js"></script>
     <!--script src="bootstrap/js/bootstrap.min.js"></script-->
     <script src="js/index.js"></script>
-   
-  </body>
+
+</body>
+
 </html>

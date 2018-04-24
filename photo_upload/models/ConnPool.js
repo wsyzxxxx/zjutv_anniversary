@@ -5,6 +5,7 @@ module.exports = (function() {
         host: 'localhost',
         user: 'root',
         password: '645658325',
+        //password: '',
         database: 'photo_upload',
         port: '3306'
     });

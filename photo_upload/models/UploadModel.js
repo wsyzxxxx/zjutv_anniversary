@@ -7,9 +7,14 @@ function uploadWithUser(req, res, formData, photoPath, user_id) {
         if (err) {
             res.send("Get database link failed. The error is: " + err.message);
         }
-        var insertSql = "insert into photo(description,status,source,user_id) values(?,0,?,?)";
-        var insertParam = [formData['description'], photoPath, user_id];
-        conn.query(insertSql, insertParam, function(err, result) {
+        var insertSql = "insert into photo(description,status,source,user_id) values ?";
+        //var insertParam = [formData['description'], photoPath, user_id];
+        var insertParam = [];
+        //添加多条数据到insertParam[i];达到批量添加的效果
+        for(var i = 0;i<photoPath.length;i++){
+            insertParam[i] = [formData["description"+String(i+1)], 0,photoPath[i], user_id];
+        }
+        conn.query(insertSql, [insertParam], function(err, result) {
             if (err) {
                 res.send("Database error! " + err.message);
                 return;
@@ -30,7 +35,7 @@ function uploadWithoutUser(req, res, formData, photoPath) {
         var insertParam = [formData['name'], formData['phone'], formData['grade']];
         var selectSql = "select * from users where name=? and cellphone=?";
         var selectParam = [formData['name'], formData['phone']];
-        var insertPhotoSql = "insert into photo(description,status,source,user_id) values(?,0,?,?)";
+        var insertPhotoSql = "insert into photo(description,status,source,user_id) values ?";
         async.waterfall([
             function(callback) {
                 conn.query(insertSql, insertParam, function(err, insertResult) {
@@ -52,8 +57,13 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 })
             },
             function(arg1, callback) {
-                var photoParam = [formData['description'], photoPath, arg1[0].id];
-                conn.query(insertPhotoSql, photoParam, function(err, photoResult) {
+                //var photoParam = [formData['description'], photoPath, arg1[0].id];
+                var photoParam = [];
+                //添加多条数据到insertParam[i];达到批量添加的效果
+                for(var i = 0;i<photoPath.length;i++){
+                    photoParam[i] = [formData["description"+String(i+1)], 0,photoPath[i], arg1[0].id];
+                }
+                conn.query(insertPhotoSql, [photoParam], function(err, photoResult) {
                     if (err) {
                         res.send("Database error!:" + err.message);
                         return;

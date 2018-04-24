@@ -11,7 +11,6 @@ function adjust() {
     $(".card").each(function() {
         $(this).ready(function() {
             $(this).height($(this).width());
-            alert("surprise!" + $(this).width() + " " + $(this).height());
         });
     });
     $(".card img").each(function() {
