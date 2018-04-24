@@ -10,8 +10,6 @@
       adjust();
   });
 
-
-
   function adjust() {
 
       if ($(window).width() > 768) {
@@ -161,22 +159,76 @@
       }
   }
 
-  function bindSaveTap() {
-      var name = document.getElementsByName("name");
-      var phone = document.getElementsByName("phone");
-      var picture = document.getElementsByClassName("pic_file");
-      if (name[0].value == "") {
-          alert('请输入您的名字!');
-          return false;
-      } else if (!checkTel(phone[0].value)) {
-          alert('请输入正确电话号码!');
-          return false;
-      } else if (!checkPic(picture)) {
-          alert('请保证所有图片选择框都已选择图片!');
-          return false;
-      } else {
-          alert("all right!");
-      }
+  //   function bindSaveTap() {
+  //       var name = document.getElementsByName("name");
+  //       var phone = document.getElementsByName("phone");
+  //       var picture = document.getElementsByClassName("pic_file");
+  //       if (name[0].value == "") {
+  //           alert('请输入您的名字!');
+  //           return false;
+  //       } else if (!checkTel(phone[0].value)) {
+  //           alert('请输入正确电话号码!');
+  //           return false;
+  //       } else if (!checkPic(picture)) {
+  //           alert('请保证所有图片选择框都已选择图片!');
+  //           return false;
+  //       }
 
-      return true;
-  }
+  //       return true;
+  //   }
+
+  $(function() {
+      var bar = $('.bar');
+      var percent = $('.percent');
+      var status = $('#status');
+      $('#uploadform').ajaxForm({
+          beforeSubmit: function() {
+              var name = document.getElementsByName("name");
+              var phone = document.getElementsByName("phone");
+              var picture = document.getElementsByClassName("pic_file");
+              if (name[0].value == "") {
+                  alert('请输入您的名字!');
+                  return false;
+              } else if (!checkTel(phone[0].value)) {
+                  alert('请输入正确电话号码!');
+                  return false;
+              } else if (!checkPic(picture)) {
+                  alert('请保证所有图片选择框都已选择图片!');
+                  return false;
+              }
+
+              $("#updatemodal").modal({
+                  escapeClose: false,
+                  clickClose: false,
+                  showClose: false
+              });
+
+              return true;
+          },
+          beforeSend: function() {
+              status.empty();
+              var percentVal = '0%';
+              bar.width(percentVal)
+              percent.html(percentVal);
+          },
+          uploadProgress: function(event, position, total, percentComplete) { //上传的过程
+              //position 已上传了多少
+              //total 总大小
+              //已上传的百分数
+              var percentVal = percentComplete + '%';
+              bar.width(percentVal)
+              percent.html(percentVal);
+              //console.log(percentVal, position, total);
+          },
+          success: function(data) { //成功
+              var percentVal = '100%';
+              bar.width(percentVal)
+              percent.html(percentVal);
+              alert(data);
+              window.location.href = "/";
+          },
+          error: function(err) { //失败
+              alert("上传失败，请重试！" + err.msg);
+          }
+      });
+  });

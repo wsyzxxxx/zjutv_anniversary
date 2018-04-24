@@ -12,7 +12,12 @@
     <!-- Custom CSS-->
     <link href="stylesheets/common.css" rel="stylesheet" />
     <link href="stylesheets/index.css" rel="stylesheet" />
-    <link href="stylesheets/webuploader.css" rel="stylesheet" />
+    <link href="https://cdn.bootcss.com/jquery-modal/0.9.1/jquery.modal.min.css" rel="stylesheet">
+    <style>
+        .progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+        .bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
+        .percent { position:absolute; display:inline-block; top:3px; left:48%; }
+    </style>
 </head>
 
 <body>
@@ -49,8 +54,17 @@
                 <button id="ctlBtn" class="btncos-btn btn-default">开始上传</button>
             </div>
         </div-->
+        <div id="updatemodal" style="display:none;">
+            <p>图片上传中……</p>
+            <div class="progress">
+                <div class="bar"></div >
+                <div class="percent">0%</div >
+            </div>
+        </div>
 
-        <form onsubmit="return bindSaveTap()" method="post" action="/users/upload" enctype="multipart/form-data">
+        <div id="status"></div>
+
+        <form id="uploadform" method="post" action="/users/upload" enctype="multipart/form-data">
             <div class="row" id="photolist">
                 <div class="col-split col-sm-offset-0 col-sm-6 col-xs-offset-1 col-xs-10">
                     <div class="white card photolist">
@@ -136,6 +150,8 @@
 
     <script src="jquery/jquery.js"></script>
     <!--script src="bootstrap/js/bootstrap.min.js"></script-->
+    <script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="js/index.js"></script>
 
 </body>

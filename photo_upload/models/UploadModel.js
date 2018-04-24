@@ -11,15 +11,15 @@ function uploadWithUser(req, res, formData, photoPath, user_id) {
         //var insertParam = [formData['description'], photoPath, user_id];
         var insertParam = [];
         //添加多条数据到insertParam[i];达到批量添加的效果
-        for(var i = 0;i<photoPath.length;i++){
-            insertParam[i] = [formData["description"+String(i+1)], 0,photoPath[i], user_id];
+        for (var i = 0; i < photoPath.length; i++) {
+            insertParam[i] = [formData["description" + String(i + 1)], 0, photoPath[i], user_id];
         }
         conn.query(insertSql, [insertParam], function(err, result) {
             if (err) {
                 res.send("Database error! " + err.message);
                 return;
             }
-            res.send("<script>alert('上传成功，请等待管理员审核!');window.location.href='/';</script>");
+            res.send("上传成功，请等待管理员审核!");
         });
         conn.release();
     })
@@ -60,8 +60,8 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 //var photoParam = [formData['description'], photoPath, arg1[0].id];
                 var photoParam = [];
                 //添加多条数据到insertParam[i];达到批量添加的效果
-                for(var i = 0;i<photoPath.length;i++){
-                    photoParam[i] = [formData["description"+String(i+1)], 0,photoPath[i], arg1[0].id];
+                for (var i = 0; i < photoPath.length; i++) {
+                    photoParam[i] = [formData["description" + String(i + 1)], 0, photoPath[i], arg1[0].id];
                 }
                 conn.query(insertPhotoSql, [photoParam], function(err, photoResult) {
                     if (err) {
@@ -72,7 +72,7 @@ function uploadWithoutUser(req, res, formData, photoPath) {
                 })
             }
         ], function(err, result) {
-            res.send("<script>alert('上传成功，请等待管理员审核!');window.location.href='/';</script>");
+            res.send("上传成功，请等待管理员审核!");
         })
 
         conn.release();

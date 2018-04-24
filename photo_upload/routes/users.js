@@ -66,12 +66,12 @@ router.post('/upload', function(req, res, next) {
                         return;
                     }
                 } else {
-                    fs.rename(files[key].path, 'upload2/' + files[key].path, function(err) {
+                    fs.rename(files[key].path, 'public/' + files[key].path, function(err) {
                         console.log("Error renaming file:", err);
                     });
                 }
 
-                photoPath[i] = 'upload2/' + files[key].path;
+                photoPath[i] = 'public/' + files[key].path;
                 i++;
             });
         } else {
