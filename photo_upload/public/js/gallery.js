@@ -1,4 +1,6 @@
+alert("lalala1");
 $(window).ready(function() {
+    alert("lalala");
     adjust();
     $("#gallery .box div").click(function() {
         $("#oriPic img").attr("src", $(this).prev().attr("src"));
@@ -15,6 +17,7 @@ $(window).ready(function() {
 });*/
 
 function adjust() {
+    alert("lalala2");
     $("#gallery .box div").hide();
     var boxes = $("#gallery .box");
     var recent_num = 0;

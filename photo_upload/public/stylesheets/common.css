@@ -79,16 +79,16 @@ nav a:hover {
     border-bottom: dashed #ddd 0.1rem;
 }
 
-.cos-btn {
-    width: 100%;
-    font-size: 1.6rem;
-    background-color: #20a2f9;
-    color: white;
+.cos-btn{
+  width: 100%;
+  font-size: 1.6rem;
+  background-color: #db463e;
+  color: white;
 }
 
-.cos-btn:hover {
-    color: white;
-    background-color: #1d95e5;
+.cos-btn:hover{
+  color: white;
+  background-color: #eb362e;
 }
 
 .title {

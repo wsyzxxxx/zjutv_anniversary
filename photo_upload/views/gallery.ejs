@@ -83,12 +83,12 @@
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $(window).ready(function() {
-    adjust();
-    $("#gallery .box div").click(function() {
-        $("#oriPic img").attr("src", $(this).prev().attr("src"));
-    })
-});
+        $(window).on('load', function() {
+            adjust();
+            $("#gallery .box div").click(function() {
+                $("#oriPic img").attr("src", $(this).prev().attr("src"));
+            });
+        });
 
 /*$(window).resize(function() {
 	try{
@@ -104,42 +104,49 @@ function adjust() {
     var boxes = $("#gallery .box");
     var recent_num = 0;
     var recent_width = 0;
+    var passall = <%- JSON.stringify(pass) %>;
+    console.log('boxeslength' + boxes.length);
     for (var index = 0; index < boxes.length; index++) {
     //var index = 0;
-        <% pass.forEach(function(row) { %>
+        
         recent_width += $(boxes[index]).width();
         if (recent_width >= $("#gallery").width() - $(boxes[index]).height() / 2) {
             var new_height = $("#gallery").width() * $(boxes[index]).height() / (recent_width + recent_num * 16) - 8;
             for (var i = 0; i <= recent_num; i++) {
                 $(boxes[index - i]).find("img").height(new_height);
-                $(boxes[index - i]).find("div").height(new_height);
-                $(boxes[index - i]).find("div").width($(boxes[index - i]).width());
-                var picIntro = $("<div class = 'single-line pic-intro'></div>").text("<%= row.name %>");
-                $(boxes[index - i]).find("div").append(picIntro);
+                $(boxes[index - i]).find(".mask").height(new_height);
+                $(boxes[index - i]).find(".mask").width($(boxes[index - i]).width());
             }
             recent_num = 0;
             recent_width = 0;
         } else
             recent_num += 1;
 
-        $(boxes[index]).find("div").hover(function() {
-            var picTitle = $("<div class = 'pic-title'></div>").text("<%= row.name %>");
-            var picContent = $("<div class = 'pic-content'></div>").text("<%= row.description %>");
-            $(this).empty();
-            $(this).append(picTitle, picContent);
+        var picIntro = $("<div class = 'single-line pic-intro'></div>").text(passall[index].name);
+        var picTitle = $("<div class = 'pic-title'></div>").text(passall[index].name);
+        var picContent = $("<div class = 'pic-content'></div>").text(passall[index].description);
+        $(boxes[index]).find(".mask").append(picIntro);
+        $(boxes[index]).find(".mask").append(picTitle, picContent);
+        $(boxes[index]).find(".mask").find(".pic-title").hide();
+        $(boxes[index]).find(".mask").find(".pic-content").hide();
+
+        $(boxes[index]).find(".mask").hover(function() {
+            console.log('i1' + index);
+            $(this).find(".pic-intro").hide();
+            $(this).find(".pic-title").show();
+            $(this).find(".pic-content").show();
+            
         },
             function() {
-                var picIntro = $("<div class = 'single-line pic-intro'></div>").text("<%= row.name %>");
-                $(this).empty();
-                $(this).append(picIntro);
+                $(this).find(".pic-intro").show();
+                $(this).find(".pic-title").hide();
+                $(this).find(".pic-content").hide();
             }
         );
-        index++;
-        <% }) %>
     }
 
     //$("#gallery .box div")
-    $("#gallery .box div").show();
+    $("#gallery .box .mask").show();
 }
     </script>
 </body>
