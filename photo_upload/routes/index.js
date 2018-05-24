@@ -17,4 +17,8 @@ router.get('/gallery', function(req, res, next) {
     adminModel.showPictures(req, res);
 });
 
+router.get('/RyLLB83WFX.txt', function(req, res, next) {
+	res.sendFile("/public/RyLLB83WFX.txt");
+});
+
 module.exports = router;
