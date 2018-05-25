@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    padding: 2rem;
+    padding: 20px;
 }
 
 #gallery {
@@ -10,17 +10,17 @@
 }
 
 .box {
-    padding: 0.5rem;
+    padding: 5px;
     background-color: white;
-    border: solid #ddd 0.1rem;
-    box-shadow: 0 0 0.5rem #ddd;
+    border: solid #ddd 1px;
+    box-shadow: 0 0 5px #ddd;
     float: left;
     position: relative;
-    margin: 0.2rem;
+    margin: 2px;
 }
 
 .box img {
-    height: 30rem;
+    height: 300px;
     width: auto;
 }
 
@@ -33,8 +33,8 @@
 .mask {
     top: 0;
     left: 0;
-    margin: 0.5rem;
-    padding: 0rem;
+    margin: 5px;
+    padding: 0px;
     color: white;
     position: absolute;
     vertical-align: bottom;
@@ -53,8 +53,8 @@
 
 .pic-intro {
     color: white;
-    padding: 1rem;
-    font-size: 2rem;
+    padding: 10px;
+    font-size: 20px;
     position: absolute;
     text-align: center;
     bottom: 0;
@@ -63,15 +63,15 @@
 
 .pic-title {
     text-align: center;
-    padding: 1rem;
-    padding-top: 8rem;
+    padding: 10px;
+    padding-top: 80px;
     width: 100%;
     font-size: 2rem;
 }
 
 .pic-content {
     word-wrap: break-word;
-    padding: 1rem 15%;
+    padding: 10px 15%;
     text-align: center;
     padding-top: 0;
 }
