@@ -119,8 +119,11 @@ function adjust() {
             }
             recent_num = 0;
             recent_width = 0;
-        } else
+        } else{
             recent_num += 1;
+            $(boxes[index]).find(".mask").width($(boxes[index]).width());
+        }
+
 
         var picIntro = $("<div class = 'single-line pic-intro'></div>").text(passall[index].name);
         var picTitle = $("<div class = 'pic-title'></div>").text(passall[index].name);
