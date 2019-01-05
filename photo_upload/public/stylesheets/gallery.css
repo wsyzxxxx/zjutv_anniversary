@@ -82,3 +82,15 @@
     opacity: 0.6;
     filter: (alpha=60);
 }
+
+@media screen and (max-width: 768px) {
+    /*.box img {
+        height: 150px;
+    }
+    .mask {
+        height: 150px;
+    }*/
+    .navbar-toggle {
+        display: none;
+    }
+}
